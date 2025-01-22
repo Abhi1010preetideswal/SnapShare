@@ -16,26 +16,10 @@ const photoSchema = new mongoose.Schema({
 
 const Photo = mongoose.model('Photo', photoSchema);
 
-// Serve static files from the directory where your photos are stored
-// const photoDirectory = path.join(__dirname, 'uploads'); // Ensure this path matches your actual directory
-// app.use('/photoss', express.static(photoDirectory));
+ // Serve static files from the 'P:\\photoss' directory
 
 app.use('/photoss', express.static(path.join('P:\\photoss')));
-
-// Endpoint to get photo URLs
-// app.get('/get-photo-urls', async (req, res) => {
-//     try {
-//         const photos = await Photo.find({});
-//         const baseUrl = 'http://192.168.195.203:4001';
-//         const photoUrls = photos.map(photo => {
-//             const photoPath = photo.path.replace('P:\\photoss\\', '/photoss/').replace(/\\/g, '/');
-//             return `${baseUrl}${photoPath}`;
-//         });
-//         res.json(photoUrls);
-//     } catch (error) {
-//         res.status(500).send(error);
-//     }
-// });
+ 
 
 app.get('/get-photos', async (req, res) => {
     try {
@@ -53,7 +37,7 @@ app.get('/get-photos', async (req, res) => {
         }
 
          // Format the response to include the URLs and embeddings
-         const baseUrl = 'http://192.168.1.3:4001';
+         const baseUrl = 'http://192.168.1.7:4001';
          const photoData = photos.map(photo => {
              const photoPath = photo.path.replace('P:\\photoss\\', '/photoss/').replace(/\\/g, '/');
              return {
@@ -76,39 +60,7 @@ app.get('/get-photos', async (req, res) => {
 app.listen(4001, () => {
     console.log('Server is running on port 4001');
 });
-
-
-
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const path = require('path');
-// const Photo = require('./models/photo');
-
-// const app = express();
-// const port = 3000;
-// app.use('/photoss', express.static(path.join(__dirname, 'uploads')));
-
-// mongoose.connect('mongodb://localhost:27017/photodb', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-// }).then(() => {
-//     console.log('Connected to MongoDB');
-// }).catch(err => {
-//     console.error('Error connecting to MongoDB', err);
-// });
-
-// app.get('/get-photos', async (req, res) => {
-    
-//         const photos = await Photo.find();
-//         // res.send(photos);
-//         res.json(photos);
-    
-// });
-
-// app.listen(port, () => {
-//     console.log(`Server running at http://localhost:${port}`);
-// });
-
+ 
 
 
 

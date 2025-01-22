@@ -184,7 +184,7 @@ app.post('/send-verification-email', async (req, res) => {
         if (!user) {
             // If the email does not exist, send the verification email
             const token = jwt.sign({ email }, 'aDatAqeuUuOvqYgvU0m0eueNc5gSdT6Wk1f846Ld7KQ=', { expiresIn: '1h' });
-            const verificationLink = `http://192.168.1.3:4000/verify-email?token=${token}`;
+            const verificationLink = `http://192.168.1.7:4000/verify-email?token=${token}`;
 
             const mailOptions = {
                 from: 'abhishekdeswal74@gmail.com',
@@ -204,7 +204,7 @@ app.post('/send-verification-email', async (req, res) => {
 
         // If the email exists but is not verified, resend the verification email
         const token = jwt.sign({ email }, 'aDatAqeuUuOvqYgvU0m0eueNc5gSdT6Wk1f846Ld7KQ=', { expiresIn: '1h' });
-        const verificationLink = `http://192.168.1.3:4000/verify-email?token=${token}`;
+        const verificationLink = `http://192.168.1.7:4000/verify-email?token=${token}`;
 
         const mailOptions = {
             from: 'abhishekdeswal74@gmail.com',
